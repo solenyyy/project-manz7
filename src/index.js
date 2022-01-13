@@ -23,7 +23,7 @@ function putTeam(className) {
   const team = document.querySelector(className);
   const pElement = document.createElement("p");
   team.insertAdjacentElement("beforeend", pElement);
-  pElement.textContent = `${shuffledTeams.shift()}: ${shuffledPoints.shift()} ➡`;
+  pElement.textContent = `${shuffledTeams.shift()}: ${shuffledPoints.shift()}`;
 }
 
 function game() {
