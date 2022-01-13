@@ -19,17 +19,17 @@ const shuffledPoints = _.shuffle(POINTS);
 
 const btn = document.querySelector(".btn");
 
-function putTwoTeams() {
-  if (shuffledTeams.length != 0) {
-    const teamOne = document.querySelector(".score-team1");
-    const elOne = document.createElement("p");
-    teamOne.insertAdjacentElement("beforeend", elOne);
-    elOne.textContent = `${shuffledTeams.shift()}: ${shuffledPoints.shift()} ➡`;
+function putTeam(className) {
+  const team = document.querySelector(className);
+  const pElement = document.createElement("p");
+  team.insertAdjacentElement("beforeend", pElement);
+  pElement.textContent = `${shuffledTeams.shift()}: ${shuffledPoints.shift()} ➡`;
+}
 
-    const teamTwo = document.querySelector(".score-team2");
-    const elTwo = document.createElement("p");
-    teamTwo.insertAdjacentElement("beforeend", elTwo);
-    elTwo.textContent = `⬅${shuffledTeams.shift()}: ${shuffledPoints.shift()}`;
+function game() {
+  if (shuffledTeams.length != 0) {
+    putTeam(".score-team1");
+    putTeam(".score-team2");
   } else {
     btn.remove();
     const winMessage = document.querySelector(".container-futbol");
@@ -39,4 +39,4 @@ function putTwoTeams() {
   }
 }
 
-btn.addEventListener("click", putTwoTeams);
+btn.addEventListener("click", game);
